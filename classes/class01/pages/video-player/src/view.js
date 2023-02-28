@@ -4,6 +4,7 @@ export default class View {
     #statusElement = document.querySelector('#status')
     #videoFrameCanvas = document.createElement('canvas')
     #canvasContext = this.#videoFrameCanvas.getContext('2d', { willReadFrequently: true })
+    #videoElement = document.querySelector('#video')
 
 
     //passando os dados da webcam aula parpi 1:45:25
@@ -15,6 +16,14 @@ export default class View {
 
         this.#canvasContext.drawImage(video, 0, 0, width, heigth)
         return this.#canvasContext.getImageData(0, 0, width, heigth)
+    }
+
+    tooglePalyVideo() {
+        if (this.#videoElement.paused) {
+            this.#videoElement.play()
+            return;
+        }
+        this.#videoElement.pause()
     }
 
     enableButton() {
